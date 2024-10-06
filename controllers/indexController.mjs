@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 function indexRouteGet(req, res) {
     res.render("index", { title: "Node Template" });
 }
@@ -14,4 +16,18 @@ function createPostPost(req, res) {
     })
 }
 
-export { indexRouteGet, APIRouteGet, createPostPost };
+function loginPost(req, res) {
+    const user = {
+        id: 1,
+        username: "Ryan",
+        email: "Ryan@gmail.com"
+    }
+
+    jwt.sign({ user: user }, "secretKey", (err, token) => {
+        res.json({
+            token: token
+        })
+    });
+}
+
+export { indexRouteGet, APIRouteGet, createPostPost, loginPost };
