@@ -1,1 +1,1 @@
-A Node.js template repository
+A Node.js repository used to pracitce JSON web token authentication
