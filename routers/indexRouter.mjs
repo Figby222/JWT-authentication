@@ -7,4 +7,6 @@ indexRouter.get("/", indexController.indexRouteGet);
 
 indexRouter.get("/api", indexController.APIRouteGet);
 
+indexRouter.post("/api/posts", indexController.createPostPost);
+
 export default indexRouter;
