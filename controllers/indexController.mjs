@@ -8,4 +8,10 @@ function APIRouteGet(req, res) {
     })
 }
 
-export { indexRouteGet, APIRouteGet };
+function createPostPost(req, res) {
+    res.json({
+        message: "Post Created",
+    })
+}
+
+export { indexRouteGet, APIRouteGet, createPostPost };
