@@ -29,8 +29,19 @@ function APIRouteGet(req, res) {
 const createPostPost = [
     verifyToken,
     (req, res) => {
-        res.json({
-            message: "Post Created",
+        jwt.verify(req.token, "secretKey", (err, authData) => {
+            if (err) {
+                res.sendStatus(403);
+                return;
+            }
+            res.json({
+                message: "Post Created",
+                authData
+            })
+
+
+
+
         })
     }
 ]
@@ -42,7 +53,7 @@ function loginPost(req, res) {
         email: "Ryan@gmail.com"
     }
 
-    jwt.sign({ user: user }, "secretKey", (err, token) => {
+    jwt.sign({ user: user }, "secretKey", { expiresIn: "30s" }, (err, token) => {
         res.json({
             token: token
         })
